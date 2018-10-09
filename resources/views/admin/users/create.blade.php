@@ -5,6 +5,9 @@
 
     <h1>Create User page</h1>
 
+
+
+
     {!! Form::open(['method'=>'POST','action'=>'AdminUsersController@store','files'=>true]) !!}
     <div>
         {!! Form::label('name','Name :') !!}
@@ -20,11 +23,11 @@
     </div>
     <div>
         {!! Form::label('is_active','Status :') !!}
-        {!! Form::select('is_active',array(1=>'Active',0=>'Not Active'),0,['class'=>'form-control']) !!}
+        {!! Form::select('is_active',array(1=>'Active',0=>'Not Active'),null,['class'=>'form-control']) !!}
     </div>
     <div>
-        {!! Form::label('file','Title :') !!}
-        {!! Form::file('file',null,['class'=>'form-control']) !!}
+        {!! Form::label('photo_id','Title :') !!}
+        {!! Form::file('photo_id',null,['class'=>'form-control']) !!}
     </div>
 
     <div>
@@ -33,7 +36,7 @@
     </div>
 
     {!! Form::submit('Create Post',['class'=>'btn btn-danger']) !!}
-
+    </div>
 @include('includes.User_form_error')
 
     {!! Form::close() !!}
