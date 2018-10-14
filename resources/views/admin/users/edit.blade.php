@@ -37,12 +37,22 @@
         {!! Form::label('password','Password :') !!}
         {!! Form::password('password',['class'=>'form-control']) !!}
     </div>
+<br>
 
-    {!! Form::submit('Create Post',['class'=>'btn btn-danger']) !!}
+        <div class="col-sm-3">{!! Form::submit('Update User',['class'=>'btn btn-primary']) !!}
+        {!! Form::close() !!}
+        </div>
+        <div class="col-sm-3">
+        {!! Form::open(['method'=>'DELETE','action'=>['AdminUsersController@destroy',$user->id]]) !!}
+
+          {!! Form::submit('Delete User',['class'=>'btn btn-danger']) !!}
+
+        {!! Form::close() !!}
+        </div>
 
     @include('includes.User_form_error')
 
-    {!! Form::close() !!}
+
     </div>
 
 @endsection

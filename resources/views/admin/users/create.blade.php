@@ -35,7 +35,7 @@
         {!! Form::password('password',['class'=>'form-control']) !!}
     </div>
 
-    {!! Form::submit('Create Post',['class'=>'btn btn-danger']) !!}
+    {!! Form::submit('Create User',['class'=>'btn btn-primary']) !!}
     </div>
 @include('includes.User_form_error')
 
