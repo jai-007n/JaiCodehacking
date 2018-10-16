@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable
 {
@@ -37,12 +38,13 @@ class User extends Authenticatable
     public function setPasswordAttribute($password){
         if(!empty($password))
         {
-            $this->attributes['password']=bcrypt($password);
+           // $this->attributes['password']=bcrypt($password);
+            $this->attributes['password'] = Hash::needsRehash($password) ? Hash::make($password) : $password;
         }
     }
 
     public function isAdmin(){
-        if($this->role->name=='administrator' && $this->is_active==1)
+        if($this->role->name=='administrator')
         {
             return true;
         }

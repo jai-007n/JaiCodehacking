@@ -37,7 +37,7 @@
         {!! Form::label('password','Password :') !!}
         {!! Form::password('password',['class'=>'form-control']) !!}
     </div>
-<br>
+            <br>
 
         <div class="col-sm-3">{!! Form::submit('Update User',['class'=>'btn btn-primary']) !!}
         {!! Form::close() !!}
@@ -50,7 +50,7 @@
         {!! Form::close() !!}
         </div>
 
-    @include('includes.User_form_error')
+            @include('includes.User_form_error')
 
 
     </div>
