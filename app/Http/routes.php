@@ -15,18 +15,26 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::auth();
+//Route::auth();
 
 Route::get('/home', 'HomeController@index');
-Route::get('/admin',function(){
-
-    return view('admin.index');
-});
+Route::get('/post/{id}',['as'=>'home.post','uses'=> 'AdminPostController@post']);
 
 
 Route::group(['middleware'=>['admin']],function(){
+    Route::get('/admin',function(){
+        return view('admin.index');
+    });
     Route::resource('admin/users','AdminUsersController');
     Route::resource('admin/posts','AdminPostController');
     Route::resource('admin/categories','AdminCategoriesController');
+    Route::resource('admin/media','AdminMediaController');
+    Route::resource('admin/comments','PostCommentController');
+    Route::resource('admin/comments/replies','CommentReplyController');
+
+});
+
+Route::group(['middleware'=>['admin']],function() {
+    Route::post('comment/reply', 'CommentReplyController@createReply');
 
 });
